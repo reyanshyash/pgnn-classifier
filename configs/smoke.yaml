@@ -1,0 +1,42 @@
+seed: 7
+
+data:
+  local_length: 31
+  global_length: 301
+  batch_size: 32
+  num_workers: 0
+  split_ratios:
+    train: 0.70
+    validation: 0.10
+    calibration: 0.10
+    test: 0.10
+
+model:
+  conv_channels: [8, 12]
+  kernel_size: 5
+  lightcurve_latent: 16
+  scalar_hidden: 16
+  scalar_latent: 16
+  fusion_hidden: 32
+  fusion_latent: 16
+  dropout: 0.05
+  share_view_encoder: true
+  num_subclasses: 4
+
+training:
+  epochs: 2
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  grad_clip_norm: 5.0
+  early_stopping_patience: 2
+  physics_warmup_epochs: 0
+  physics_ramp_epochs: 1
+  auxiliary_weight: 0.20
+  geometry_weight: 0.05
+  subclass_weight: 0.10
+  huber_delta: 0.10
+  device: auto
+
+calibration:
+  max_iterations: 30
+  ece_bins: 10
